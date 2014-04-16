@@ -1,0 +1,8 @@
+gmmevents.m: extracts gathering events and builds social network of statistically significant links
+
+gmmevents_groups_only.m: extracts ONLY the gathering events from the data stream
+
+for more information,including input/output variables,  please write on MATLAB prompt:
+>> help gmmevents.m
+
+or see file description in the comments
