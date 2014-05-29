@@ -1,8 +1,56 @@
-gmmevents.m: extracts gathering events and builds social network of statistically significant links
+This code is based on the paper:
+"Inferring social network structure in ecological systems from spatio-temporal data streams"
+by Ioannis Psorakis, Stephen J. Roberts, Iead Rezek and Ben C. Sheldon,
+Journal of the Royal Society Interface, vol. 9 no. 76, pp 3055-3066 (2012).
 
+The following colleagues have also provided invaluable contributions, insights, bug reports 
+and feature suggestions:
+
+Damien Farine
+Bernhard Voelkl
+Colin Garroway
+Reinder Radesma
+Lucy Aplin
+
+along with the rest of the Edward Grey Institute team at Oxford University Dept. of Zoology.
+
+------
+The package contains two scripts, run from the MATLAB command line:
+gmmevents.m: extracts gathering events and builds social network of statistically significant links
 gmmevents_groups_only.m: extracts ONLY the gathering events from the data stream
 
-for more information,including input/output variables,  please write on MATLAB prompt:
->> help gmmevents.m
+The two scripts have different outputs and for more information please write on MATLAB prompt:
+>> help gmmevents
+%or
+>> help gmmevents_groups_only
+or see file description in the comments.
 
-or see file description in the comments
+Both scripts have a common input structure, which is:
+% INPUTS:
+% -------
+% DATA: a Z-by-3 matrix, where Z the total number of observations. The
+% first column Z(:,1) denotes the real-valued timestamps of each observation. The
+% second column Z(:,2) denotes the indices of the individuals that were
+% recorded. Such indices must be INTEGER values, as they refer to nodes in
+% the adjacency matrix. Finally, the third column Z(:,3) denotes the index
+% of the location where the observation took place. Again, such indices
+% must be integer values.
+% Example:
+% % if we wish to see the contents of the 15th observation (z=15) in our
+% data stream, we write:
+% >> DATA(15,:)
+% ans =
+%    18516495           2           1
+%
+% which reads: "the individual i=2 appeared at location l=1 at time
+% t=18516495"
+%
+% N: is the total number of distinct individuals in the data stream. If not
+% provided, it is automatically calculated by the second column of DATA
+
+% number_of_randomisations: the total number of data stream permutations
+% during link significance testing. If the user does not wish to perform
+% the test, set the value of that variable less or equal than 1, or not
+% pass it at all.
+
+--------
