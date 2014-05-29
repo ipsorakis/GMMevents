@@ -1,7 +1,31 @@
 % Ioannis Psorakis, Stephen J. Roberts, Iead Rezek and Ben Sheldon
 % Inferring social network structure in ecological systems from spatio-temporal data streams
 % University of Oxford 2011
-
+%
+% INPUTS:
+% -------
+% DATA: a Z-by-3 matrix, where Z the total number of observations. The
+% first column Z(:,1) denotes the real-valued timestamps of each observation. The
+% second column Z(:,2) denotes the indices of the individuals that were
+% recorded. Such indices must be INTEGER values, as they refer to nodes in
+% the adjacency matrix. Finally, the third column Z(:,3) denotes the index
+% of the location where the observation took place. Again, such indices
+% must be integer values.
+% Example:
+% % if we wish to see the contents of the 15th observation (z=15) in our
+% data stream, we write:
+% >> DATA(15,:)
+% ans =
+%    18516495           2           1
+%
+% which reads: "the individual i=2 appeared at location l=1 at time
+% t=18516495"
+%
+% total_individuals: is the total number of distinct individuals in the data stream. If not
+% provided, it is automatically calculated by the second column of DATA
+%
+% NOTE: this code does not perform a significance test
+%
 % OUTPUTS:
 % B: L-cell array, where L is the number of locations. Each cell B{l} is a
 % N-by-K matrix, where N are the nodes and K are the groups/gathering
