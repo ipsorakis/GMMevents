@@ -1,7 +1,7 @@
 % Ioannis Psorakis, Stephen J. Roberts, Iead Rezek and Ben Sheldon
 % Inferring social network structure in ecological systems from spatio-temporal data streams
 % University of Oxford 2011
-
+%
 % INPUTS:
 % -------
 % DATA: a Z-by-3 matrix, where Z the total number of observations. The
@@ -28,8 +28,7 @@
 % during link significance testing. If the user does not wish to perform
 % the test, set the value of that variable less or equal than 1, or not
 % pass it at all.
-
-
+%
 % OUTPUTS:
 % -------
 % A: N-by-N adjacency matrix, where N nodes in the network
@@ -38,13 +37,13 @@
 % events.
 % X: is a N-by-1 column vector, where X(n) is the number of times
 % individual n appeared in the data stream
-
+%
 % Anull_mean: N-by-N adjacency matrix, were Anull_mean(i,j) is the average co-occurrence 
 %(link weight) between nodes i and j under the null model
-
+%
 % Anull_std: N-by-N adjacency matrix, were Anull_std(i,j) is the stardard deviation of co-occurrence 
 %(link weight) between nodes i and j under the null model
-
+%
 % corresponding author: Ioannis Psorakis ioannis.psorakis@eng.ox.ac.uk
 
 function [A B X Anull_mean Anull_std] = gmmevents(DATA,total_individuals,number_of_randomisations)
