@@ -44,9 +44,11 @@
 % Anull_std: N-by-N adjacency matrix, were Anull_std(i,j) is the stardard deviation of co-occurrence 
 %(link weight) between nodes i and j under the null model
 %
+% Yall: L-1 cell where each element Yall{l} is a K x Z sparse matrix where each element z,k is 1 if
+% observation z was assigned to cluster k and zero otherwise.
 % corresponding author: Ioannis Psorakis ioannis.psorakis@eng.ox.ac.uk
 
-function [A B X Anull_mean Anull_std] = gmmevents(DATA,total_individuals,number_of_randomisations)
+function [A B X Anull_mean Anull_std Y_all] = gmmevents(DATA,total_individuals,number_of_randomisations)
 
 addpath(genpath('aux_scripts/'))
 
@@ -73,6 +75,7 @@ end
 X = histc(DATA(:,2),1:total_individuals);
 
 B = cell(total_locations,1);
+Y_all = cell(total_locations,1);
 
 for location_index = 1: total_locations
     DATA_local_worker_copy = DATA;
@@ -90,6 +93,7 @@ for location_index = 1: total_locations
     [output gmm IM_LOC] = infer_graph_from_datastream_mmVB(DATA_LOC);
     A_LOC = output.A_hard_cooccurences;
     B_LOC = output.B_hard_incidence_matrix;
+    Y_all{location_index} = output.Y_hard
     
     %% DO SIGNIFICANCE TEST HERE
     % use either:
