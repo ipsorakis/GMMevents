@@ -31,7 +31,7 @@ Y_hard(:,non_active_clusters) = [];
 centroids(non_active_clusters) = [];
 
 EVENT_TIMES = get_T_matrix(Y_hard,DATA);
-Y_hard = Y_hard';
+Y_hard = sparse(Y_hard');
 
 B_hard_incidence_matrix = build_B_from_Y(DATA,Y_hard);
 A_hard_cooccurences = get_coocurences_in_bipartite_graph(B_hard_incidence_matrix);
