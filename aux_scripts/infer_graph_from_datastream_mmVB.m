@@ -39,5 +39,5 @@ A_hard_cooccurences = get_coocurences_in_bipartite_graph(B_hard_incidence_matrix
 %
 output = struct('centroids',centroids...
     ,'A_hard_cooccurences',A_hard_cooccurences,'B_hard_incidence_matrix',B_hard_incidence_matrix,...
-    'EVENT_TIMES',EVENT_TIMES);
+    'EVENT_TIMES',EVENT_TIMES,'Y_hard',Y_hard);
 end
